@@ -1,0 +1,21 @@
+{
+  "name": "server",
+  "version": "0.0.0",
+  "description": "Assignment 1 for my networks course!",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon lib/app.js"
+  },
+  "keywords": [
+    "Server"
+  ],
+  "author": "Emmanuel Lennix",
+  "license": "MIT",
+  "dependencies": {
+    "connect-busboy": "0.0.2",
+    "express": "^4.15.2",
+    "fs-extra": "^2.1.2",
+    "nodemon": "^1.11.0"
+  }
+}
