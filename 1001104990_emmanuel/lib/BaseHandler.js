@@ -13,6 +13,11 @@ function BaseHandler ()
 
 function GET(req,res)
 {
+	
+	console.log(req.method +' '+ req.url +' HTTP/'+req.httpVersion)
+	console.log('Host: '+req.headers['host'])
+	console.log('Accept-Encoding:'+req.headers['accept-encoding'])
+	console.log('\n')
 	if(req.url == '/')
 	{
 		res.status = 200;
