@@ -14,10 +14,7 @@ function BaseHandler ()
 function GET(req,res)
 {
 	
-	console.log(req.method +' '+ req.url +' HTTP/'+req.httpVersion)
-	console.log('Host: '+req.headers['host'])
-	console.log('Accept-Encoding:'+req.headers['accept-encoding'])
-	console.log('\n')
+	
 	if(req.url == '/')
 	{
 		res.status = 200;
@@ -26,7 +23,7 @@ function GET(req,res)
 	}
 	else if(fs.existsSync(path.join(__dirname,'/public',req.url)) == false)
 	{
-		res.statusCode = 404
+		res.status = 404
 		res.end("404: File NOT FOUND")
 	}
 	else
@@ -35,6 +32,8 @@ function GET(req,res)
 		fs.createReadStream( path.join(__dirname,'/public',req.url) ).pipe(res)
 		
 	}
+	console.log('Status: '+res.status)
+	console.log('\n')
 }
 
 
@@ -58,12 +57,18 @@ function POST (req,res)
 	})
 
 	res.status = 200;
+	console.log('Status: '+res.status)
+	console.log('\n')
 	
 	
 }
 
 BaseHandler.prototype.handleRequest = function (req,res)
 {
+	console.log(req.method +' '+ req.url +' HTTP/'+req.httpVersion)
+	console.log('Host: '+req.headers['host'])
+	console.log('Accept-Encoding:'+req.headers['accept-encoding'])
+	
 	if(req.method == 'GET') GET(req,res);
 	else if(req.method == 'POST') POST(req,res);
 }
